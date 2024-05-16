@@ -551,6 +551,13 @@ require('lazy').setup({
         -- tsserver = {},
         --
 
+        ['ltex-ls'] = {
+          settings = {
+            ltex = {
+              language = 'de-DE',
+            },
+          },
+        },
         lua_ls = {
           -- cmd = {...},
           -- filetypes = { ...},
