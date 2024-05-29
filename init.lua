@@ -590,6 +590,8 @@ require('lazy').setup({
             },
           },
         },
+        isort = {},
+        black = {},
       }
 
       -- Ensure the servers and tools above are installed
