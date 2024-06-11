@@ -130,15 +130,7 @@ return { -- LSP Configuration & Plugins
       gopls = {},
       rust_analyzer = {},
       tsserver = {},
-      ['ltex-ls'] = {
-        settings = {
-          ltex = {
-            dictionary = {
-              ['de-DE'] = vim.fn.readfile(vim.fn.expand '~/.config/nvim/dict/de-DE.txt'),
-            },
-          },
-        },
-      },
+      ['ltex-ls'] = {},
       lua_ls = {
         settings = {
           Lua = {
