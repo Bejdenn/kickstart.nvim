@@ -22,9 +22,6 @@ return { -- LSP Configuration & Plugins
     vim.api.nvim_create_autocmd('LspAttach', {
       group = vim.api.nvim_create_augroup('kickstart-lsp-attach', { clear = true }),
       callback = function(event)
-        -- NOTE: Remember that Lua is a real programming language, and as such it is possible
-        -- to define small helper and utility functions so you don't have to repeat yourself.
-        --
         -- In this case, we create a function that lets us more easily define mappings specific
         -- for LSP related items. It sets the mode, buffer and description for us each time.
         local map = function(keys, func, desc)
@@ -138,8 +135,6 @@ return { -- LSP Configuration & Plugins
             completion = {
               callSnippet = 'Replace',
             },
-            -- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
-            -- diagnostics = { disable = { 'missing-fields' } },
           },
         },
       },
@@ -147,16 +142,8 @@ return { -- LSP Configuration & Plugins
       black = {},
     }
 
-    -- Ensure the servers and tools above are installed
-    --  To check the current status of installed tools and/or manually install
-    --  other tools, you can run
-    --    :Mason
-    --
-    --  You can press `g?` for help in this menu.
     require('mason').setup()
 
-    -- You can add other tools here that you want Mason to install
-    -- for you, so that they are available from within Neovim.
     local ensure_installed = vim.tbl_keys(servers or {})
     vim.list_extend(ensure_installed, {
       'stylua', -- Used to format Lua code
