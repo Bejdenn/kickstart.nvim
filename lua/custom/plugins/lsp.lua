@@ -128,7 +128,7 @@ return { -- LSP Configuration & Plugins
       gopls = {},
       rust_analyzer = {},
       tsserver = {},
-      ['ltex-ls'] = {},
+      ltex = {},
       lua_ls = {
         settings = {
           Lua = {
