@@ -373,10 +373,16 @@ require('lazy').setup({
         lua = { 'stylua' },
         -- Conform can also run multiple formatters sequentially
         python = { 'isort', 'black' },
+        tex = { 'latexindent' },
+        markdown = { 'mdformat' },
+        sh = { 'shfmt' },
         --
         -- You can use a sub-list to tell conform to run *until* a formatter
         -- is found.
         -- javascript = { { "prettierd", "prettier" } },
+      },
+      formatters = {
+        mdformat = { append_args = { '--wrap', '80' } },
       },
     },
   },
