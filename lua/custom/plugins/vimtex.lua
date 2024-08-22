@@ -13,4 +13,14 @@ return {
     end,
   },
   { 'micangl/cmp-vimtex' },
+  {
+    'barreiroleo/ltex_extra.nvim',
+    branch = 'dev',
+    ft = { 'markdown', 'tex' },
+    dependencies = { 'neovim/nvim-lspconfig' },
+    opts = {
+      load_langs = { 'de-DE' },
+      path = '.ltex',
+    },
+  },
 }
