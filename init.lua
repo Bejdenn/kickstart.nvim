@@ -596,6 +596,8 @@ require('lazy').setup({
         tex = { 'latexindent' },
         markdown = { 'mdformat' },
         sh = { 'shfmt' },
+        css = { 'prettier' },
+        jsonc = { 'prettier' },
         --
         -- You can use 'stop_after_first' to run the first available formatter from the list
         -- javascript = { "prettierd", "prettier", stop_after_first = true },
