@@ -868,3 +868,11 @@ vim.opt.linebreak = true
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
+--
+
+vim.filetype.add {
+  pattern = {
+    ['.bash_prompt'] = 'sh',
+    ['.*/sway/config.d/.*'] = 'swayconfig',
+  },
+}
