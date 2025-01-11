@@ -1,10 +1,11 @@
 return {
-  'sainnhe/gruvbox-material',
-  lazy = false,
-  priority = 1000,
-  config = function()
-    vim.g.gruvbox_material_enable_italic = true
-    vim.g.gruvbox_material_diagnostic_virtual_text = 'colored'
-    vim.cmd.colorscheme 'gruvbox-material'
-  end,
+	"shaunsingh/nord.nvim",
+	lazy = false,
+	priority = 1000,
+	config = function()
+		vim.g.nord_disable_background = true
+		vim.g.nord_bold = false
+
+		vim.cmd([[ colorscheme nord ]])
+	end,
 }
