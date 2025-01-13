@@ -1,11 +1,8 @@
 return {
-	"shaunsingh/nord.nvim",
-	lazy = false,
-	priority = 1000,
-	config = function()
-		vim.g.nord_disable_background = true
-		vim.g.nord_bold = false
-
-		vim.cmd([[ colorscheme nord ]])
-	end,
+  'gbprod/nord.nvim',
+  lazy = false,
+  priority = 1000,
+  config = function()
+    vim.cmd.colorscheme 'nord'
+  end,
 }
