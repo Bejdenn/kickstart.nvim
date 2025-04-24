@@ -725,7 +725,7 @@ require('lazy').setup({
       },
     },
   },
-
+  { 'saadparwaiz1/cmp_luasnip' },
   { -- Autocompletion
     'hrsh7th/nvim-cmp',
     event = 'InsertEnter',
@@ -746,12 +746,12 @@ require('lazy').setup({
           -- `friendly-snippets` contains a variety of premade snippets.
           --    See the README about individual language/framework/plugin snippets:
           --    https://github.com/rafamadriz/friendly-snippets
-          -- {
-          --   'rafamadriz/friendly-snippets',
-          --   config = function()
-          --     require('luasnip.loaders.from_vscode').lazy_load()
-          --   end,
-          -- },
+          {
+            'rafamadriz/friendly-snippets',
+            config = function()
+              require('luasnip.loaders.from_vscode').lazy_load { include = { 'go', 'tex', 'bib' } }
+            end,
+          },
         },
       },
       'saadparwaiz1/cmp_luasnip',
@@ -767,7 +767,13 @@ require('lazy').setup({
       -- See `:help cmp`
       local cmp = require 'cmp'
       local luasnip = require 'luasnip'
-      luasnip.config.setup {}
+      luasnip.config.setup {
+        enable_autosnippets = true,
+        store_selection_keys = '<Tab>',
+        update_events = 'TextChanged,TextChangedI',
+      }
+
+      require('luasnip.loaders.from_lua').lazy_load { paths = { '~/.config/nvim/luasnippets' } }
 
       cmp.setup {
         snippet = {
