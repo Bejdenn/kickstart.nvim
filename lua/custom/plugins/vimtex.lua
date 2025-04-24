@@ -12,7 +12,6 @@ return {
       vim.g.vimtex_complete_enabled = 1
     end,
   },
-  { 'micangl/cmp-vimtex' },
   {
     'barreiroleo/ltex_extra.nvim',
     branch = 'dev',
