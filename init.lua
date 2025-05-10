@@ -754,6 +754,9 @@ require('lazy').setup({
           },
         },
         opts = {},
+        config = function()
+          require('luasnip.loaders.from_lua').lazy_load { paths = { '~/.config/nvim/luasnippets' } }
+        end,
       },
       'folke/lazydev.nvim',
     },
@@ -801,6 +804,8 @@ require('lazy').setup({
         documentation = { auto_show = true, auto_show_delay_ms = 0 },
       },
 
+      snippets = { preset = 'luasnip' },
+
       sources = {
         default = { 'lsp', 'path', 'snippets', 'lazydev', 'omni' },
         providers = {
@@ -808,8 +813,6 @@ require('lazy').setup({
         },
       },
     },
-
-    snippets = { preset = 'luasnip' },
 
     -- Blink.cmp includes an optional, recommended rust fuzzy matcher,
     -- which automatically downloads a prebuilt binary when enabled.
