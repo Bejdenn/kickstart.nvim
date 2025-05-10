@@ -11,7 +11,7 @@ return {
       }
 
       local shellcheck = lint.linters.shellcheck
-      shellcheck.args = { '-x' }
+      table.insert(shellcheck.args, 1, '-x')
 
       -- To allow other plugins to add linters to require('lint').linters_by_ft,
       -- instead set linters_by_ft like this:
