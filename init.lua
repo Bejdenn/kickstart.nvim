@@ -717,6 +717,7 @@ require('lazy').setup({
         sh = { 'shfmt' },
         css = { 'prettier' },
         jsonc = { 'prettier' },
+        sql = { 'sqruff' },
         --
         -- You can use 'stop_after_first' to run the first available formatter from the list
         -- javascript = { "prettierd", "prettier", stop_after_first = true },
