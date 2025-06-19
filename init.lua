@@ -600,21 +600,6 @@ require('lazy').setup({
       local servers = {
         -- clangd = {},
         gopls = {},
-        pyright = {
-          settings = {
-            pyright = {
-              -- Using Ruff's import organizer
-              disableOrganizeImports = true,
-            },
-            python = {
-              analysis = {
-                -- Ignore all files for analysis to exclusively use Ruff for linting
-                ignore = { '*' },
-              },
-            },
-          },
-        },
-        ruff = {},
         -- rust_analyzer = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
         --
@@ -625,6 +610,7 @@ require('lazy').setup({
         -- ts_ls = {},
         --
         ['ltex-ls'] = {},
+        -- pylsp = {},
         lua_ls = {
           -- cmd = { ... },
           -- filetypes = { ... },
@@ -636,6 +622,17 @@ require('lazy').setup({
               },
               -- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
               -- diagnostics = { disable = { 'missing-fields' } },
+            },
+          },
+        },
+      }
+
+      require('lspconfig').pylsp.setup {
+        settings = {
+          pylsp = {
+            -- FIXME: Set env variable for WEBOTS_HOME permanently and reference that instead of absolute path
+            plugins = {
+              jedi = { extra_paths = { '/snap/webots/current/usr/share/webots/lib/controller/python' } },
             },
           },
         },
@@ -712,7 +709,6 @@ require('lazy').setup({
       formatters_by_ft = {
         lua = { 'stylua' },
         -- Conform can also run multiple formatters sequentially
-        python = { 'ruff_format', 'ruff_organize_imports' },
         tex = { 'latexindent' },
         sh = { 'shfmt' },
         css = { 'prettier' },
@@ -749,7 +745,7 @@ require('lazy').setup({
           {
             'rafamadriz/friendly-snippets',
             config = function()
-              require('luasnip.loaders.from_vscode').lazy_load { include = { 'go', 'tex', 'bib' } }
+              require('luasnip.loaders.from_vscode').lazy_load { include = { 'go', 'tex', 'bib', 'sh', 'python' } }
             end,
           },
         },

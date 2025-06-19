@@ -7,7 +7,6 @@ return {
       local lint = require 'lint'
       lint.linters_by_ft = {
         sh = { 'shellcheck' },
-        python = { 'ruff' },
       }
 
       local shellcheck = lint.linters.shellcheck
