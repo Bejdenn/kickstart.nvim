@@ -1,8 +1,8 @@
 return {
-  'gbprod/nord.nvim',
-  lazy = false,
+  'catppuccin/nvim',
+  name = 'catppuccin',
   priority = 1000,
   config = function()
-    vim.cmd.colorscheme 'nord'
+    vim.cmd [[colorscheme catppuccin-mocha]]
   end,
 }
