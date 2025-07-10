@@ -637,16 +637,36 @@ require('lazy').setup({
         },
       }
 
-      require('lspconfig').pylsp.setup {
+      require('lspconfig').pyright.setup {
         settings = {
-          pylsp = {
-            -- FIXME: Set env variable for WEBOTS_HOME permanently and reference that instead of absolute path
-            plugins = {
-              jedi = { extra_paths = { '/snap/webots/current/usr/share/webots/lib/controller/python' } },
+          pyright = {
+            -- Using Ruff's import organizer
+            disableOrganizeImports = true,
+          },
+          python = {
+            analysis = {
+              -- Ignore all files for analysis to exclusively use Ruff for linting
+              ignore = { '*' },
+              extraPaths = { os.getenv 'WEBOTS_HOME_PATH' .. '/lib/controller/python' },
             },
           },
         },
       }
+
+      vim.api.nvim_create_autocmd('LspAttach', {
+        group = vim.api.nvim_create_augroup('lsp_attach_disable_ruff_hover', { clear = true }),
+        callback = function(args)
+          local client = vim.lsp.get_client_by_id(args.data.client_id)
+          if client == nil then
+            return
+          end
+          if client.name == 'ruff' then
+            -- Disable hover in favor of Pyright
+            client.server_capabilities.hoverProvider = false
+          end
+        end,
+        desc = 'LSP: Disable hover capability from Ruff',
+      })
 
       -- Ensure the servers and tools above are installed
       --
@@ -724,6 +744,11 @@ require('lazy').setup({
         css = { 'prettier' },
         jsonc = { 'prettier' },
         sql = { 'sqruff' },
+        python = {
+          'ruff_format',
+          -- To organize the imports.
+          'ruff_organize_imports',
+        },
         --
         -- You can use 'stop_after_first' to run the first available formatter from the list
         -- javascript = { "prettierd", "prettier", stop_after_first = true },
