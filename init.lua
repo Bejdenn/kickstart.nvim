@@ -615,6 +615,22 @@ require('lazy').setup({
         --
         ['ltex-ls'] = {},
         -- pylsp = {},
+        pyright = {
+          settings = {
+            pyright = {
+              -- Using Ruff's import organizer
+              disableOrganizeImports = true,
+            },
+            python = {
+              analysis = {
+                -- Ignore all files for analysis to exclusively use Ruff for linting
+                ignore = { '*' },
+                extraPaths = { os.getenv 'WEBOTS_HOME_PATH' .. '/lib/controller/python' },
+              },
+            },
+          },
+        },
+        ruff = {},
         lua_ls = {
           -- cmd = { ... },
           -- filetypes = { ... },
@@ -630,37 +646,6 @@ require('lazy').setup({
           },
         },
       }
-
-      require('lspconfig').pyright.setup {
-        settings = {
-          pyright = {
-            -- Using Ruff's import organizer
-            disableOrganizeImports = true,
-          },
-          python = {
-            analysis = {
-              -- Ignore all files for analysis to exclusively use Ruff for linting
-              ignore = { '*' },
-              extraPaths = { os.getenv 'WEBOTS_HOME_PATH' .. '/lib/controller/python' },
-            },
-          },
-        },
-      }
-
-      vim.api.nvim_create_autocmd('LspAttach', {
-        group = vim.api.nvim_create_augroup('lsp_attach_disable_ruff_hover', { clear = true }),
-        callback = function(args)
-          local client = vim.lsp.get_client_by_id(args.data.client_id)
-          if client == nil then
-            return
-          end
-          if client.name == 'ruff' then
-            -- Disable hover in favor of Pyright
-            client.server_capabilities.hoverProvider = false
-          end
-        end,
-        desc = 'LSP: Disable hover capability from Ruff',
-      })
 
       require('mason-lspconfig').setup {
         automatic_enable = vim.tbl_keys(servers or {}),
