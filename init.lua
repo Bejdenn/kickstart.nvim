@@ -722,6 +722,7 @@ require('lazy').setup({
           -- To organize the imports.
           'ruff_organize_imports',
         },
+        markdown = { 'deno_fmt' },
         --
         -- You can use 'stop_after_first' to run the first available formatter from the list
         -- javascript = { "prettierd", "prettier", stop_after_first = true },
