@@ -11,14 +11,16 @@ return {
   },
   lazy = false,
   keys = {
-    { '\\', ':Neotree reveal position=right toggle<CR>', desc = 'NeoTree reveal', silent = true },
+    { '\\', ':Neotree reveal toggle<CR>', desc = 'NeoTree reveal', silent = true },
   },
   opts = {
     filesystem = {
       window = {
+        position = 'right',
         mappings = {
           ['\\'] = 'close_window',
         },
+        hijack_netrw_behavior = 'open_default',
       },
     },
   },
