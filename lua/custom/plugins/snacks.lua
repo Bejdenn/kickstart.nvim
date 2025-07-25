@@ -1,16 +1,21 @@
 return {
   'folke/snacks.nvim',
   priority = 1000,
+  lazy = false,
   ---@type snacks.Config
   opts = {
     lazygit = {
       configure = false,
     },
+    image = { enabled = true },
   },
-  config = function()
-    local snacks = require 'snacks'
-    local wk = require 'which-key'
-    wk.add { { '<leader>l', snacks.lazygit.open, desc = 'Open [L]azyGit' } }
-    snacks.setup()
-  end,
+  keys = {
+    {
+      '<leader>gg',
+      function()
+        require('snacks').lazygit()
+      end,
+      desc = 'Lazygit',
+    },
+  },
 }
