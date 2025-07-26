@@ -754,7 +754,16 @@ require('lazy').setup({
           {
             'rafamadriz/friendly-snippets',
             config = function()
-              require('luasnip.loaders.from_vscode').lazy_load { include = { 'go', 'tex', 'bib', 'sh', 'python' } }
+              require('luasnip.loaders.from_vscode').lazy_load {
+                include = {
+                  'go',
+                  'tex',
+                  'bib',
+                  'sh',
+                  'python',
+                  'markdown',
+                },
+              }
             end,
           },
         },
