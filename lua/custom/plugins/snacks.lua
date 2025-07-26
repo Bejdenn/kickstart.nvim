@@ -8,6 +8,7 @@ return {
       configure = false,
     },
     image = { enabled = true },
+    dashboard = {},
   },
   keys = {
     {
