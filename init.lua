@@ -716,8 +716,8 @@ require('lazy').setup({
         -- Conform can also run multiple formatters sequentially
         tex = { 'latexindent' },
         sh = { 'shfmt' },
-        css = { 'prettier' },
-        jsonc = { 'prettier' },
+        css = { 'prettierd', 'prettier', stop_after_first = true },
+        jsonc = { 'prettierd', 'prettier', stop_after_first = true },
         sql = { 'sqruff' },
         python = {
           'ruff_format',
