@@ -185,7 +185,6 @@ rtp:prepend(lazypath)
 -- NOTE: Here is where you install your plugins.
 require('lazy').setup({
   -- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
-  'NMAC427/guess-indent.nvim', -- Detect tabstop and shiftwidth automatically
 
   -- NOTE: Plugins can also be added by using a table,
   -- with the first argument being the link and the following
@@ -625,7 +624,6 @@ require('lazy').setup({
               analysis = {
                 -- Ignore all files for analysis to exclusively use Ruff for linting
                 ignore = { '*' },
-                extraPaths = { os.getenv 'WEBOTS_HOME_PATH' .. '/lib/controller/python' },
               },
             },
           },
@@ -650,6 +648,10 @@ require('lazy').setup({
       require('mason-lspconfig').setup {
         automatic_enable = vim.tbl_keys(servers or {}),
       }
+
+      if os.getenv 'WEBOTS_HOME_PATH' ~= nil then
+        servers.pyright.settings.python.extraPaths = { os.getenv 'WEBOTS_HOME_PATH' .. '/lib/controller/python' }
+      end
 
       -- Ensure the servers and tools above are installed
       --
