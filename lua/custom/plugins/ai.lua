@@ -22,7 +22,12 @@ return {
   dependencies = {
     'nvim-lua/plenary.nvim',
     'MunifTanjim/nui.nvim',
-    'zbirenbaum/copilot.lua', -- for providers='copilot'
+    {
+      'github/copilot.vim',
+      config = function()
+        vim.g.copilot_filetypes = { ['*'] = false }
+      end,
+    },
     {
       -- Make sure to set this up properly if you have lazy=true
       'MeanderingProgrammer/render-markdown.nvim',
