@@ -35,6 +35,7 @@ return { -- Autoformat
       sh = { 'shfmt' },
       css = { 'prettierd', 'prettier', stop_after_first = true },
       jsonc = { 'prettierd', 'prettier', stop_after_first = true },
+      json = { 'prettierd', 'prettier', stop_after_first = true },
       sql = { 'sqruff' },
       python = {
         'ruff_format',
