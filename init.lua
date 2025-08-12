@@ -620,6 +620,11 @@ require('lazy').setup({
             pyright = {
               -- Using Ruff's import organizer
               disableOrganizeImports = true,
+              settings = {
+                python = {
+                  extraPaths = os.getenv 'WEBOTS_HOME_PATH' ~= nil and { os.getenv 'WEBOTS_HOME_PATH' .. '/lib/controller/python' } or {},
+                },
+              },
             },
             python = {
               analysis = {
@@ -649,10 +654,6 @@ require('lazy').setup({
       require('mason-lspconfig').setup {
         automatic_enable = vim.tbl_keys(servers or {}),
       }
-
-      if os.getenv 'WEBOTS_HOME_PATH' ~= nil then
-        servers.pyright.settings.python.extraPaths = { os.getenv 'WEBOTS_HOME_PATH' .. '/lib/controller/python' }
-      end
 
       -- Ensure the servers and tools above are installed
       --
