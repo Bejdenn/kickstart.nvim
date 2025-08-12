@@ -729,6 +729,20 @@ require('lazy').setup({
         -- You can use 'stop_after_first' to run the first available formatter from the list
         -- javascript = { "prettierd", "prettier", stop_after_first = true },
       },
+      formatters = {
+        latexindent = {
+          append_args = {
+            '--yaml',
+            "indentRules:chapter:'\t';section:'\t';subsection:'\t'"
+              .. 'indentAfterHeadings:chapter:indentAfterThisHeading:1;'
+              .. 'level:1,'
+              .. 'indentAfterHeadings:section:indentAfterThisHeading:1;'
+              .. 'level:2,'
+              .. 'indentAfterHeadings:subsection:indentAfterThisHeading:1;'
+              .. 'level:3',
+          },
+        },
+      },
     },
   },
   { -- Autocompletion
