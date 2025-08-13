@@ -18,7 +18,7 @@ return {
     ft = { 'markdown', 'tex' },
     dependencies = { 'neovim/nvim-lspconfig' },
     opts = {
-      load_langs = { 'de-DE' },
+      load_langs = { 'de' },
       path = '.ltex',
     },
   },
