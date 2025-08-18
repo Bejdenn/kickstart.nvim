@@ -31,7 +31,6 @@ return { -- Collection of various small independent plugins/modules
       return '%2l:%-2v'
     end
 
-    require('mini.sessions').setup()
     require('mini.pairs').setup()
 
     -- ... and there is more!
