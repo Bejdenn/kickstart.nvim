@@ -23,6 +23,7 @@ return {
       },
     },
     terminal = {},
+    statuscolumn = {},
   },
   keys = {
     {
