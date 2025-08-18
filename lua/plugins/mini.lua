@@ -16,6 +16,11 @@ return { -- Collection of various small independent plugins/modules
     -- - sr)'  - [S]urround [R]eplace [)] [']
     require('mini.surround').setup()
 
+    -- Normally this removes the character under the cursor and
+    -- switches to Insert Mode, but I did not even know that this existed
+    -- and it collides with mini.surround
+    vim.keymap.set({ 'n', 'x' }, 's', '<nop>', { noremap = true, silent = true })
+
     -- Simple and easy statusline.
     --  You could remove this setup call if you don't like it,
     --  and try some other statusline plugin
