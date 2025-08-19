@@ -36,7 +36,7 @@ return {
     {
       '<c-/>',
       function()
-        Snacks.terminal()
+        Snacks.terminal(nil, { win = { height = 0.2 } })
       end,
       desc = 'Toggle Terminal',
     },
