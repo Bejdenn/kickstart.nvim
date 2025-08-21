@@ -7,6 +7,14 @@ return {
       local lint = require 'lint'
       lint.linters_by_ft = {
         markdown = { 'markdownlint-cli2' },
+        sql = { 'sqlfluff' },
+      }
+      -- nvim-lint does not respect .sqlfluff file with dialect overrides
+      -- so you have to override the args to disable the `--dialect` flag
+      -- that is set: https://github.com/mfussenegger/nvim-lint/issues/819
+      lint.linters.sqlfluff.args = {
+        'lint',
+        '--format=json',
       }
 
       -- To allow other plugins to add linters to require('lint').linters_by_ft,
