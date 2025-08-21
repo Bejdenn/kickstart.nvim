@@ -36,7 +36,7 @@ return { -- Autoformat
       css = { 'prettierd', 'prettier', stop_after_first = true },
       jsonc = { 'prettierd', 'prettier', stop_after_first = true },
       json = { 'prettierd', 'prettier', stop_after_first = true },
-      sql = { 'sqruff' },
+      sql = { 'sqlfluff' },
       python = {
         'ruff_format',
         -- To organize the imports.
