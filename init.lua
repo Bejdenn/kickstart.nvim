@@ -105,6 +105,10 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
+-- Removes that annoying Vim keymap that collides with exiting insert mode:
+-- https://www.reddit.com/r/vim/comments/2om1ib/comment/cmop4zh/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
+vim.g.omni_sql_no_default_maps = 1
+
 -- [[ Install `lazy.nvim` plugin manager ]]
 --    See `:help lazy.nvim.txt` or https://github.com/folke/lazy.nvim for more info
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
